@@ -14,6 +14,7 @@ public class Connector {
     public synchronized  static  Connection getConnection(){
     if (connection == null){
         try {
+
             Class.forName(JDBCConnection.DRIVER_CLASS);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

@@ -1,5 +1,7 @@
 package com.pavelpoimanov.cars.model;
 
+import com.pavelpoimanov.cars.util.Connector;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -12,8 +14,17 @@ public class Auto {
     private String num;
     private String color;
     private String mark;
+    private Person person;
+    private int persone_id;
 
     public Auto() {
+    }
+
+    public Auto(int id, String num, String color, String mark) {
+        this.id = id;
+        this.num = num;
+        this.color = color;
+        this.mark = mark;
     }
 
     public int getPersone_id() {
@@ -24,9 +35,6 @@ public class Auto {
         this.persone_id = persone_id;
     }
 
-    private int persone_id;
-
-
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Auto{");
@@ -34,6 +42,8 @@ public class Auto {
         sb.append(", num='").append(num).append('\'');
         sb.append(", color='").append(color).append('\'');
         sb.append(", mark='").append(mark).append('\'');
+        sb.append(", person=").append(person);
+        sb.append(", persone_id=").append(persone_id);
         sb.append('}');
         return sb.toString();
     }
@@ -70,19 +80,13 @@ public class Auto {
         this.mark = mark;
     }
 
-
-    public Auto(int id, String num, String color, String mark) {
-        this.id = id;
-        this.num = num;
-        this.color = color;
-        this.mark = mark;
-    }
-
     public void persist(ResultSet resultSet) throws SQLException {
     this.setId(resultSet.getInt("id"));
         this.setNum(resultSet.getString("num"));
         this.setColor(resultSet.getString("color"));
         this.setMark(resultSet.getString("mark"));
         this.setPersone_id(resultSet.getInt("persone_id"));
+        this.person = new Person();
+        this.person.persist(Connector.getConnection().createStatement().executeQuery("SELECT * from cars.auto_personal WHERE id = " + this.getPersone_id()));
     }
 }
