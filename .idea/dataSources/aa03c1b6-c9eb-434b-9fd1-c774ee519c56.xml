@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="cars@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="cars">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="contactmanager"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="movies"/>
+    <schema id="6" parent="1" name="myjh"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="performance_schema"/>
+    <schema id="9" parent="1" name="restourant"/>
+    <schema id="10" parent="1" name="sys"/>
+    <schema id="11" parent="1" name="testdb"/>
+    <table id="12" parent="2" name="auto"/>
+    <table id="13" parent="2" name="auto_personal"/>
+    <table id="14" parent="2" name="journal"/>
+    <table id="15" parent="2" name="routes"/>
+    <column id="16" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="12" name="num">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="18" parent="12" name="color">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="19" parent="12" name="mark">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="20" parent="12" name="persone_id">
+      <Position>5</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="21" parent="12" name="persone_id">
+      <ColNames>persone_id</ColNames>
+    </index>
+    <key id="22" parent="12" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="23" parent="12" name="auto_ibfk_1">
+      <ColNames>persone_id</ColNames>
+      <RefSchemaName>cars</RefSchemaName>
+      <RefTableName>auto_personal</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="24" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="13" name="first_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="26" parent="13" name="last_name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="27" parent="13" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="29" parent="14" name="time_out">
+      <Position>2</Position>
+      <DataType>timestamp(3)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP(3)</DefaultExpression>
+    </column>
+    <column id="30" parent="14" name="time_in">
+      <Position>3</Position>
+      <DataType>timestamp(3)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0000-00-00 00:00:00.000&apos;</DefaultExpression>
+    </column>
+    <column id="31" parent="14" name="auto_id">
+      <Position>4</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="14" name="route_id">
+      <Position>5</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="33" parent="14" name="auto_id">
+      <ColNames>auto_id</ColNames>
+    </index>
+    <key id="34" parent="14" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="35" parent="14" name="journal_ibfk_1">
+      <ColNames>auto_id</ColNames>
+      <RefSchemaName>cars</RefSchemaName>
+      <RefTableName>auto</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="36" parent="14" name="journal_ibfk_2">
+      <ColNames>auto_id</ColNames>
+      <RefSchemaName>cars</RefSchemaName>
+      <RefTableName>routes</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="37" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="15" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="39" parent="15" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
